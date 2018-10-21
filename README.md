@@ -4,13 +4,13 @@
 
 https://developers.eos.io/eosio-home/docs/getting-the-software
 
-1. Get docker image 
+1. **Get docker image** 
 
 ```
  docker pull eosio/eos:v1.3.2
 ```
 
-2. Boot node and wallet in docker contaier
+2. **Boot node and wallet in docker contaier**
 
    ```
    docker run --name eosio \
@@ -23,25 +23,20 @@ https://developers.eos.io/eosio-home/docs/getting-the-software
      "keosd --http-server-address=0.0.0.0:5555 & exec nodeos -e -p eosio --plugin eosio::producer_plugin --plugin eosio::history_plugin --plugin eosio::chain_api_plugin --plugin eosio::history_plugin --plugin eosio::history_api_plugin --plugin eosio::http_plugin -d /mnt/dev/data --config-dir /mnt/dev/config --http-server-address=0.0.0.0:7777 --access-control-allow-origin=* --contracts-console --http-validate-host=false --filter-on='*'"
    ```
 
-   3. Check node installtion 
+3. **Check node installtion** 
 
-      ```
-      docker logs --tail 10 eosio
-      ```
+    ```
+    docker logs --tail 10 eosio
+    ```
 
-
-
-4. Check wallet
+4. **Check wallet**
 
 ```bash
 docker exec -it eosio bash # enter into eos container bash shell
 cleos --wallet-url http://127.0.0.1:5555 wallet list keys # use cleos to conect with keosd and check wallets (right now their is no wallet)
-
 ```
 
-
-
-5. Check nodeos endpoints
+5. **Check nodeos endpoints**
 
 -  `get_info` endpoint provided by the `chain_api_plugin`
 
@@ -51,7 +46,7 @@ cleos --wallet-url http://127.0.0.1:5555 wallet list keys # use cleos to conect 
 
 
 
-6. Create alias for cleos command (runs command directly inside the container)
+6. **Create alias for cleos command (runs command directly inside the container)**
 
 7. ```bash
    alias cleos='docker exec -it eosio /opt/eosio/bin/cleos --url http://127.0.0.1:7777 --wallet-url http://127.0.0.1:5555'
@@ -59,7 +54,7 @@ cleos --wallet-url http://127.0.0.1:5555 wallet list keys # use cleos to conect 
 
 
 
-7. Start and stop eos container 
+7. **Start and stop eos container** 
 
 ```bash
 docker start eosio
@@ -103,25 +98,25 @@ brew install eosio.cdt
 
 Wallets are used for auth, not for storing the tokens
 
-- Create wallet 
+- **Create wallet** 
 
 - ```bash
   cleos wallet create --to-console
   ```
 
-- open wallet 
+- **open wallet** 
 
 ```
 cleos wallet open
 ```
 
-- List wallets
+- **List wallets**
 
 ```bash
 cleos wallet list
 ```
 
-- I forgot the save the default wallet key, so craeted another one
+- **I forgot the save the default wallet key, so craeted another one**
 
 ```bash
 cleos wallet create wallet-1 --to-console
@@ -158,15 +153,13 @@ Created new private key with a public key of: : **EOS5wHoN1c72q2ttocGrq59Eh8ESQb
 
 
 
-
-
 ## Create test accounts
 
 - Account is a 
-  - collection of authorizations
-  - stored on the blockchain
-  - Used to identify sender/recepient
-  - can be owned by individual or a group of individuals
+  - **collection of authorizations**
+  - stored on the **blockchain**
+  - Used to **identify sender/recepient**
+  - can be owned by **individual or a group of individuals**
   - an accoutn is required to sent or receive a transaction to the blockchain
 
 - Create accounts for **Bob** and **Alice **(using the public key we imported to wallet)
@@ -184,77 +177,16 @@ Created new private key with a public key of: : **EOS5wHoN1c72q2ttocGrq59Eh8ESQb
   warning: transaction executed locally, but may not be confirmed by the network yet    ]
   ```
 
-
-
-- Use a owner/active key combination
-  - so if account is compromised, we can use the owner key to regain account access
-
+- **Use a owner/active key combination**
+  - so if account is compromised, we can use the owner key to **regain account access**
 
 
 
+## Wallet
 
+- Stores keys, not tokens
+- Transaction object is sent to wallet
+- Wallet signs the transaction object 
+- When networks confirms the signature on transaction is correct
+- only then trasaction is included in a block
 
-
-
-
-
-
-- What are wallets 
-
-  - Stores keys not tokens
-  - Transaction object is sent to wallet
-  - Wallet signs the transaction object 
-  - When networks confirms the signature on transaction is correct
-  - only then trasaction is included in a block
-
-
-## Setting up nodeos
-
-1. 
-
-2. 
-
-3. Setup EOS node using docker (https://developers.eos.io/eosio-nodeos/docs/docker-quickstart)
-
-   1. pull docker image
-
-   ```
-   docker pull eosio/eos-dev:v1.3.0
-   ```
-
-
-
-   2. Create network
-
-   ```
-   docker network create eosdev
-   ```
-
-
-
-   3. Boot containers
-
-   ```
-   docker run \
-     --name nodeos -d -p 8888:8888 \
-     --network eosdev \
-     -v /tmp/eosio/work:/work \
-     -v /tmp/eosio/data:/mnt/dev/data \
-     -v /tmp/eosio/config:/mnt/dev/config \
-     eosio/eos-dev 
-   /bin/bash -c \
-     "nodeos -e -p eosio \
-       --plugin eosio::producer_plugin \
-       --plugin eosio::history_plugin \
-       --plugin eosio::chain_api_plugin \
-       --plugin eosio::history_api_plugin \
-       --plugin eosio::http_plugin \
-       -d /mnt/dev/data \
-       --config-dir /mnt/dev/config \
-       --http-server-address=0.0.0.0:8888 \
-       --access-control-allow-origin=* \
-       --contracts-console \
-       --http-validate-host=false"
-   ```
-
-   1. run docker 
