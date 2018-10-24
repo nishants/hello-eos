@@ -2,7 +2,7 @@ const { Api, JsonRpc, RpcError, JsSignatureProvider } = require('eosjs');
 const fetch = require('node-fetch');                            // node only; not needed in browsers
 const { TextDecoder, TextEncoder } = require('text-encoding');  // node, IE11 and IE Edge Browsers
 
-const defaultPrivateKey = process.env.EOS_CRYPTOKYLIN_PRIVATE_KEY; 
+const defaultPrivateKey = process.env.EOS_CRYPTOKYLIN_PRIVATE_KEY;
 !defaultPrivateKey && console.error("EOS_CRYPTOKYLIN_PRIVATE_KEY is missing")
 
 const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
@@ -14,19 +14,19 @@ const rpc = new JsonRpc('https://kylin.eoscanada.com', { fetch });
 
 try {
   const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
-  const result = await api.transact({
+const result = await api.transact({
   actions: [{
-    account: 'eosio',
-    name: 'buyrambytes',
-    authorization: [{
-      actor: 'eoszenmaster',
-      permission: 'active',
-    }],
-    data: {
-      payer: 'eoszenmaster',
-      receiver: 'nishanttoeos',
-      bytes: 8192,
-    },
+      account: 'eosio',
+      name: 'buyram',
+      authorization: [{
+          actor: 'eoszenmaster',
+          permission: 'active',
+      }],
+      data: {
+          payer: 'eoszenmaster',
+          receiver: 'eoszenmaster',
+          quant: '0.5000 EOS',
+      },
   }]
 }, {
   blocksBehind: 3,

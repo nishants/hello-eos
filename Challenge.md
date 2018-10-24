@@ -39,3 +39,13 @@ When answering, make sure to demonstrate
 \- learning process
 
 \- deep understanding
+
+
+
+
+
+**Notes**
+
+- burram vs buyrambytes
+- https://github.com/EOS-Mainnet/governance/blob/master/eosio.system/eosio.system-buyram-rc.md
+- 
