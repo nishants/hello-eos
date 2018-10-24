@@ -178,6 +178,7 @@ Created new private key with a public key of: : **EOS5wHoN1c72q2ttocGrq59Eh8ESQb
   ```
 
 - **Use a owner/active key combination**
+
   - so if account is compromised, we can use the owner key to **regain account access**
 
 

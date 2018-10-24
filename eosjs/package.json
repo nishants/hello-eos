@@ -1,0 +1,15 @@
+{
+  "name": "hello-eosjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/hello.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eosjs": "^20.0.0-beta2",
+    "node-fetch": "^2.2.0"
+  }
+}

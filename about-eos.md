@@ -40,8 +40,6 @@ Unlike Ethereum , it is designed to be able to handle millions (claimed for futu
 
 
 
-- 
-
 **EOS token** 
 
 - acts like currency (hold value)
@@ -83,24 +81,27 @@ Dan Larimer CTO of Block One
 - rest 4 % goes to top three proposoal (smart contracts) based on voting from token holders aimed at growth, development and maintainance
 - resources are acuired by staking claim (tokens) rather than selling it, hence users does not pay for infra but the inflation does
 - link : https://www.reddit.com/r/eos/comments/8zx018/please_help_me_understand_the_purpose_of/
-- 
-
 
 
 **Flexibility** 
 
 - elected block producers can make decisions like freezing an app if it misbehaves
+
 - supports parallel processing of smart contracts (support of horizontal scalability)
+
 - supports aync communication
+
 - makes smart contracts to be written in a way that describes what can be done in paralle
+
 - interoperable : nodes can share information
 
 - has web toolkit for interface development
-- self describing interfaces
-- self desccibing database schemas
-- declarative permission scheme
-- 
 
+- self describing interfaces
+
+- self desccibing database schemas
+
+- declarative permission scheme
 
 
 **Governance**
@@ -125,6 +126,8 @@ Dan Larimer CTO of Block One
 
 
 **useful links :** 
+
+- https://www.youtube.com/watch?v=E3Tx2DseLGE : Building Distributed Apps With EOS.IO Blockchain
 
 - https://blockgeeks.com/guides/eos-blockchain/
 - https://www.eos-radar.com/

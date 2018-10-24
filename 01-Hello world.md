@@ -35,7 +35,7 @@ EOSIO_DISPATCH(mycontract, (myaction))   // EOSIO_ABI is renamed to EOSIO_DISPAT
 2. **Compile**
 
 ```bash
-eosio-cpp -o hello.wasm hello.cpp --abigen
+eosio-cpp -o mycontract.wasm mycontract.cpp --abigen
 ```
 
 3. **Create an account hello that will send the transaction**
@@ -44,7 +44,7 @@ eosio-cpp -o hello.wasm hello.cpp --abigen
    - And creatign account is a trasaction on blockchain
 
 ```bash
-cleos create account eosio mycontract EOS5wHoN1c72q2ttocGrq59Eh8ESQbVMFDABciLKb3aktf3dLBPMj -p eosio@active
+cleos create account eosio mycontract EOS8NkSHJpKRqTzme4m1rMQRsZtkgSJnp4a2TKDb83kng4rcJSrEh -p eosio@active
 ```
 
 **here** EOS5wHoN1c72q2ttocGrq59Eh8ESQbVMFDABciLKb3aktf3dLBPMj **is a public key we imported to the wallet**
@@ -121,13 +121,7 @@ cleos push action mycontract myaction '["bob"]' -p alice@active
 
 ```bash
 
-cleos create account eosio mycontract EOS5wHoN1c72q2ttocGrq59Eh8ESQbVMFDABciLKb3aktf3dLBPMj -p eosio@active
 
-eosio-cpp -o mycontract.wasm mycontract.cpp --abigen
-
-cleos set contract mycontract /Users/nishantsingh/Projects/eos/with-docker/contracts/mycontract -p mycontract@active
-
-cleos push action mycontract myaction '["bob"]' -p bob@active
 ```
 
 
