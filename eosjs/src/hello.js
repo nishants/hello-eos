@@ -28,7 +28,7 @@ const delegateBandwidth = ({from, receiver, cpuTokens, netTokens}) => ({
         account: 'eosio',
         name: 'delegatebw',
         authorization: [{
-            actor: 'eoszenmaster',
+            actor: from,
             permission: 'active',
         }],
         data: {
@@ -41,13 +41,31 @@ const delegateBandwidth = ({from, receiver, cpuTokens, netTokens}) => ({
     }
 );
 
+const sendTokens = ({from, to, tokens, memo})=> (
+    {
+        account: 'eosio.token',
+        name: 'transfer',
+        authorization: [{
+            actor: from,
+            permission: 'active',
+        }],
+        data: {
+            from,
+            to,
+            quantity: `${tokens} EOS`,
+            memo: memo || '',
+        },
+    }
+);
+
 (async () => {
     try {
         const api = new Api({rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder()});
         const result = await api.transact({
             actions: [
-                buyRam({payer: 'eoszenmaster', receiver: 'eoszenmaster', tokens: '0.5000'}),
-                delegateBandwidth({from: 'eoszenmaster', receiver: 'eoszenmaster', cpuTokens: '1.1000'})
+                // buyRam({payer: 'eoszenmaster', receiver: 'eoszenmaster', tokens: '0.5000'}),
+                delegateBandwidth({from: 'eoszenmaster', receiver: 'eoszenmaster', cpuTokens: '1.1000', netTokens: '0.5000'}),
+                sendTokens({from: 'eoszenmaster', to: 'eosasia11111', tokens: "2.0000"})
             ]
         }, {
             blocksBehind: 3,

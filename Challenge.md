@@ -12,6 +12,10 @@ On Kylin, create a single transaction with the following 2 actions.
 
 Provide the transaction id of your transaction.
 
+**c11b8feb95e38985effede131d825120f62112c1be7c7d8a2540a79ff19936b6**
+
+**c11b8feb95e38985effede131d825120f62112c1be7c7d8a2540a79ff19936b6**
+
 
 
 2.  In EOS, voting determines who gets to produce blocks.
